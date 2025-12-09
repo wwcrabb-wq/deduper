@@ -37,8 +37,8 @@ class ImageHasher:
                     img = img.convert('RGB')
                 # Use difference hash (dHash) - good balance of speed and accuracy
                 return imagehash.dhash(img, hash_size=self.hash_size)
-        except Exception as e:
-            print(f"Error processing image {image_path}: {e}")
+        except Exception:
+            # Return None on error; caller can handle logging
             return None
     
     def store_hash(self, image_path: str, hash_value: imagehash.ImageHash):
